@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda de Remeras Personalizadas</title>
+    <link rel="stylesheet" href="styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+         <!-- Agrega el SDK de Firebase -->
+         <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js"></script>
+         <script src="https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js"></script>
+         <script>
+             // Tu configuración de Firebase
+             const firebaseConfig = {
+                 apiKey: "AIzaSyDWlu8HtTYcWE85DcGgKgpA2vxfCDEOzow",
+                 authDomain: "zcappetienda.firebaseapp.com",
+                 projectId: "zcappetienda",
+                 storageBucket: "zcappetienda.appspot.com",
+                 messagingSenderId: "237122750666",
+                 appId: "1:237122750666:web:11a320b711046327220c33",
+                 measurementId: "G-PYTEYFGRC9"
+             };
+     
+             // Inicializa Firebase
+             const app = firebase.initializeApp(firebaseConfig);
+             const analytics = firebase.analytics();
+         </script>
+</head>
+<body>
+    <header>
+        <!-- Logo de la tienda -->
+        <img src="logo.png" alt="Logo de la tienda" width="300" height="80">
+    </header>
+    <nav>
+        <!-- Botones de categorías -->
+        <a href="#ninos">Niño/a</a>
+        <a href="#hombres">Hombre</a>
+        <a href="#mujeres">Mujeres</a>
+        <a href="#mochilas">Mochilas</a>
+        <div class="auth-buttons">
+            <div class="auth-buttons-container">
+                <a href="../y/login/login.html" id="loginBtn">Inicio de Sesión</a>
+                <a href="../y/Crear/crear.html">Registro</a>
+            </div>
+            <a href="../y/crearProducto/crearProducto.html" id="adminLink" style="display: none;" ">Panel de Administrador</a>
+            <a href="#" id="logoutBtn" style="display: none;" onclick="logout()">Cerrar Sesión</a> <!-- Ocultar el botón de Cerrar Sesión por defecto -->
+        </div>
+    </nav>
+    <div class="container">
+        <!-- Contenido de las categorías -->
+        <section id="ninos" class="category">
+            <h2>Niño/a</h2>
+            
+            <div class="products">
+                <!-- Producto 1 -->
+            </div>
+    <div>
+    
+        </section>
+        <!-- Hombre -->
+        <section id="hombres" class="category">
+            <h2>Hombre</h2>
+            <div class="products">
+            </div>
+        </section>
+        <!-- Mujeres -->
+        <section id="mujeres" class="category">
+            <h2>Mujeres</h2>
+            <div class="products">
+                <!-- Imágenes de productos para Mujeres -->
+                <!-- Agrega las imágenes aquí -->
+            </div>
+        </section>
+        <!-- Mochilas -->
+        <section id="mochilas" class="category">
+            <h2>Mochilas</h2>
+            <div class="products">
+                <!-- Imágenes de productos para Mochilas -->
+                <!-- Agrega las imágenes aquí -->
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <!-- Información de contacto -->
+        <p>Dirección: [Tu dirección]</p>
+        <p>Ubicación: [Tu ubicación]</p>
+        <p>Contacto: [Tus contactos]</p>
+    </footer>
+    <script src="script.js"></script>
+ 
+    
+</body>
+</html>

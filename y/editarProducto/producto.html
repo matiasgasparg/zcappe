@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../editarProducto/producto.css">
+    <title>Editar Producto</title>
+</head>
+<body>
+    <div class="product-edit">
+        <div class="product-image">
+            <img id="productImage" src="" alt="Product Image">
+            <button class="edit-button" id="editImageButton">Cambiar Imagen del Producto</button>
+        </div>
+        <div class="product-info">
+            <div class="info-row">
+                <div class="info-label">Descripción:</div>
+                <div class="info-value" id="productDescription"></div>
+                <button class="edit-button" id="editDescriptionButton">Editar</button> <!-- Agregado -->
+            </div>
+            <div class="info-row">
+                <div class="info-label">Precio:</div>
+                <div class="info-value" id="productPrice"></div>
+                <button class="edit-button" id="editPriceButton">Editar</button> <!-- Agregado -->
+            </div>
+            <div class="info-row">
+                <button class="edit-button" id="volver">Volver</button>
+            </div>
+                    
+            <!-- El modal -->
+            <div id="imageModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" id="closeModal">&times;</span>
+                    <h2>Cambiar Imagen del Producto</h2>
+                    <input type="file" id="newImageInput">
+                    <button id="updateImageButton">Actualizar Imagen</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../editarProducto/producto.js"></script>
+    <script src="../editarProducto/subir.js"></script>
+
+    
+
+</body>
+</html>
