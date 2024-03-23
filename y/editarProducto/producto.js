@@ -85,6 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     volver.addEventListener('click', () => {
-        location.href = '../index.html';
+        location.href = './index.html';
     });
 });

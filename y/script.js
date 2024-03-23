@@ -154,7 +154,7 @@ function displayProductsByCategory(categoryId, products) {
                     // Cuando se presiona el botón de editar producto, se obtiene el idimagen y se redirige a producto.js
                     const idimagen = product.idimagen;
                     localStorage.setItem('idimagen', idimagen); // Guardar el idimagen en el almacenamiento local
-                    window.location.href = '../editarProducto/producto.html'; // Redirigir a producto.html
+                    window.location.href = './editarProducto/producto.html'; // Redirigir a producto.html
                 });
 
                 productElement.appendChild(editButton);
