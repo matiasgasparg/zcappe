@@ -96,7 +96,7 @@ function displayProducts(products) {
         'Niño': [],
         'Hombre': [],
         'Mujer': [],
-        'Mochilas': [],
+        'Mochila': [],
         'Mas': [] // Agregamos una categoría para productos sin categoría definida
     };
     console.log(products)
@@ -114,7 +114,7 @@ function displayProducts(products) {
     displayProductsByCategory('ninos', categorias['Niño']);
     displayProductsByCategory('hombres', categorias['Hombre']);
     displayProductsByCategory('mujeres', categorias['Mujer']);
-    displayProductsByCategory('mochilas', categorias['Mochilas']);
+    displayProductsByCategory('mochilas', categorias['Mochila']);
     // Llama a más funciones para mostrar productos de otras categorías si es necesario
 }
 

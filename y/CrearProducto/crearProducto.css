@@ -82,3 +82,16 @@ footer {
   font-weight: bold;
   cursor: pointer;
 }
+.info-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    
+}
+#registrarProductoBtn {
+  margin-right: 10px; /* Ajustar el margen entre los botones */
+}
+
+#volver {
+  margin-left: auto; /* Mover el botón "Volver" a la derecha */
+}

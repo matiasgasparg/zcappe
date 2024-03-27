@@ -29,7 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
             if (response.ok) {
                 const responseData = await response.json();
                 console.log('Producto registrado exitosamente:', responseData);
+
                 alert('Producto registrado exitosamente');
+
+                
                 // Agrega aquí la lógica para redirigir o mostrar un mensaje de éxito
             } else {
                 console.error('Error al registrar el producto:', response.statusText);
@@ -108,4 +111,12 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Seleccione una imagen para subir.');
         }
     });
+});
+
+volver.addEventListener('click', () => {
+    location.href = '../index.html';
+});
+
+document.getElementById('volver').addEventListener('click', function() {
+    window.history.back(); // Redirigir al usuario a la página anterior
 });
