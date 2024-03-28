@@ -5,7 +5,7 @@ const uploadImage = async (file) => {
         const formData = new FormData();
         formData.append('image', file);
 
-        const response = await fetch('http://127.0.0.1:5000/upload', {
+        const response = await fetch('https://zcappe.pythonanywhere.com/upload', {
             method: 'POST',
             body: formData
         });

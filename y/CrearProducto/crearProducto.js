@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const productRegistrationForm = document.getElementById('productRegistrationForm');
+    const productRegistrationForm = document.getElementById ('productRegistrationForm');
     
 
     productRegistrationForm.addEventListener('submit', async (event) => {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('http://127.0.0.1:5000/upload/crear', {
+            const response = await fetch('https://zcappe.pythonanywhere.com/upload/crear', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const formData = new FormData();
             formData.append('image', file);
 
-            const response = await fetch('http://127.0.0.1:5000/upload', {
+            const response = await fetch('https://zcappe.pythonanywhere.com/upload', {
                 method: 'POST',
                 body: formData
             });

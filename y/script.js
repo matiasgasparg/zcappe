@@ -67,7 +67,7 @@ function logout() {
 // Función para obtener todos los datos de los productos desde el servidor
 function getProductsFromServer() {
     // Realizar una solicitud GET al servidor para obtener todos los datos de los productos
-    fetch('http://127.0.0.1:5000/upload/')
+    fetch('https://zcappe.pythonanywhere.com/upload/')
         .then(response => {
             // Verificar si la respuesta del servidor es exitosa
             if (!response.ok) {

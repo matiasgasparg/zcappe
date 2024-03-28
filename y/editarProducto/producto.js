@@ -11,10 +11,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const updatePriceButton = document.getElementById('updatePriceButton');
     const volver = document.getElementById('volver');
 
-    const BASE_URL = "http://127.0.0.1:5000"; // Cambiar esta dirección si es necesario
 
     // Obtener los datos del producto desde el servidor y actualizar la página
-    fetch(`${BASE_URL}/upload/${idimagen}`)
+    fetch(`https://zcappe.pythonanywhere.com/upload/${idimagen}`)
         .then(response => response.json())
         .then(productData => {
             // Actualiza los valores en la página con los datos obtenidos del servidor
@@ -55,7 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para actualizar un campo del producto en el servidor
     function updateProductField(field, value) {
-        const url = `${BASE_URL}/upload/${idimagen}`;
+        const url = `https://zcappe.pythonanywhere.com/upload/${idimagen}`;
         const data = {
             field: field,
             value: value
