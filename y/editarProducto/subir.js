@@ -1,61 +1,64 @@
-const idimagen = localStorage.getItem('idimagen');
+const productId = localStorage.getItem('productId');
 
-const uploadImage = async (file) => {
+
+const uploadImages = async (files) => {
+    const imageUrls = [];
+
     try {
-        const formData = new FormData();
-        formData.append('image', file);
+        for (const file of files) {
+            const formData = new FormData();
+            formData.append('image', file);
 
-        const response = await fetch('https://zcappe.pythonanywhere.com/upload', {
-            method: 'POST',
-            body: formData
-        });
+            const response = await fetch('https://zcappe.pythonanywhere.com/imagen/', {
+                method: 'POST',
+                body: formData
+            });
 
-        if (!response.ok) {
-            throw new Error('Error al subir la imagen');
+            if (!response.ok) {
+                throw new Error('Error al subir la imagen');
+            }
+
+            const data = await response.json();
+            const fileName = data.fileName;
+            const storageUrl = `https://firebasestorage.googleapis.com/v0/b/zcappetienda.appspot.com/o/${encodeURIComponent(fileName)}?alt=media`;
+
+            imageUrls.push(storageUrl);
         }
 
-        // Extraer el nombre del archivo de la respuesta del servidor
-        const data = await response.json();
-        const fileName = data.fileName; // Asegúrate de que el servidor devuelva el nombre del archivo
-        
-        // Construir la URL correcta utilizando el nombre del archivo
-        const storageUrl = `https://firebasestorage.googleapis.com/v0/b/zcappetienda.appspot.com/o/${encodeURIComponent(fileName)}?alt=media`;
-
-        console.log(storageUrl); // Muestra la URL correcta en la consola
-        return storageUrl; // Devuelve la URL de la imagen desde el almacenamiento de Firebase
+        return imageUrls;
     } catch (error) {
-        console.error('Error al enviar la imagen:', error);
-        return null; // Devuelve nulo en caso de error
+        console.error('Error al enviar las imágenes:', error);
+        return null;
     }
 };
 
 const updateImageButton = document.getElementById('updateImageButton');
-
 updateImageButton.addEventListener('click', async () => {
     const fileInput = document.getElementById('newImageInput');
-    const file = fileInput.files[0];
-    
-    if (file) {
+    const files = fileInput.files;
+
+    if (files.length > 0 && files.length <= 5) { // Limita la cantidad de imágenes a 5 o menos
         try {
-            const imageUrl = await uploadImage(file);
-            if (imageUrl) {
-                // Actualizar el campo de la imagen en el servidor
-                updateProductField('url', imageUrl);
+            const imageUrls = await uploadImages(files);
+            if (imageUrls) {
+                // Actualizar el campo de las imágenes en el servidor
+                updateProductField('url', imageUrls);
+                alert('Imágenes actualizadas exitosamente.');
             } else {
-                console.error('No se pudo obtener la URL de la imagen desde el servidor.');
-                alert('Error al subir la imagen.');
+                console.error('No se pudieron obtener las URL de las imágenes desde el servidor.');
+                alert('Error al subir las imágenes.');
             }
         } catch (error) {
-            console.error('Error al subir la imagen:', error);
-            alert('Error al subir la imagen.');
+            console.error('Error al subir las imágenes:', error);
+            alert('Error al subir las imágenes.');
         }
     } else {
-        alert('Seleccione una imagen para subir.');
+        alert('Seleccione de 1 a 5 imágenes para subir.');
     }
 });
 
 function updateProductField(field, value) {
-    const url = `https://zcappe.pythonanywhere.com/upload/${idimagen}`;
+    const url = `https://zcappe.pythonanywhere.com/producto/${productId}`;
     const data = {
         field: field,
         value: value
@@ -71,7 +74,7 @@ function updateProductField(field, value) {
     .then(response => response.json())
     .then(result => {
         console.log(result);
-        if (result.message.includes('actualizado exitosamente')) {
+        if (result.message.includes('URLs actualizados exitosamente')) {
             alert('Producto actualizado exitosamente.');
             location.reload();
         } else {

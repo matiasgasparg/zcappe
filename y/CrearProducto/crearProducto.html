@@ -35,32 +35,59 @@
                 <input type="number" id="precio" required>
             </div>
             <div class="input-field">
-                <label for="url">URL de la imagen:</label>
-                <input type="text" id="url" required>
+                <label for="url1">URL de la imagen:</label>
+                <input type="text" id="url1" required>
+            </div>
+            <div class="input-field">
+                <label for="url2">URL de la imagen 2:</label>
+                <input type="text" id="url2" >
+            </div>  
+            <div class="input-field">
+                <label for="url3">URL de la imagen 3:</label>
+                <input type="text" id="url3" >
+            </div>
+            <div class="input-field">
+                <label for="url4">URL de la imagen 4:</label>
+                <input type="text" id="url4" >
+            </div>
+            <div class="input-field">
+                <label for="url5">URL de la imagen 5:</label>
+                <input type="text" id="url5" >
             </div>
             <div class="input-field">
                 <label for="url">Subir Imagen:</label>
-                <button class="edit-button" id="editImageButton">Subir Imagen del Producto</button>
+                <button class="edit-button" data-url-field="url1" id="editImageButton1" type="button">Subir Imagen del Producto</button>
             </div>
-            
+            <div class="input-field">
+                <label for="url">Subir Imagen 2:</label>
+                <button class="edit-button" data-url-field="url2" id="editImageButton2" type="button">Subir Imagen del Producto</button>
+            </div>
+            <div class="input-field">
+                <label for="url">Subir Imagen 3:</label>
+                <button class="edit-button" data-url-field="url3" id="editImageButton3" type="button">Subir Imagen del Producto</button>
+            </div>
+            <div class="input-field">
+                <label for="url">Subir Imagen 4:</label>
+                <button class="edit-button" data-url-field="url4" id="editImageButton4" type="button">Subir Imagen del Producto</button>
+            </div>
+            <div class="input-field">
+                <label for="url">Subir Imagen 5:</label>
+                <button class="edit-button" data-url-field="url5" id="editImageButton5" type="button">Subir Imagen del Producto</button>
+            </div>
 
             <button type="submit" id="registrarProductoBtn">Registrar Producto</button>
             <a class="edit-button" id="volver" href="../index.html">Volver</a>
 
-             
-                    
             <!-- El modal -->
             <div id="imageModal" class="modal" style="display: none;">
                 <div class="modal-content">
                     <span class="close" id="closeModal">&times;</span>
                     <h2>Cambiar Imagen del Producto</h2>
                     <input type="file" id="newImageInput">
-                    <button id="updateImageButton">Actualizar Imagen</button>
+                    <button id="updateImageButton" type="button">Actualizar Imagen</button>
                 </div>
             </div>
-     
         </form>
-
     </div>
 
     <footer>

@@ -13,9 +13,11 @@
     </header>
     <div class="product-edit">
         <div class="product-image">
-            <img id="productImage" src="" alt="Product Image">
-            <button class="edit-button" id="editImageButton">Cambiar Imagen del Producto</button>
+            <!-- Cambiamos el ID a una clase ya que habrá múltiples imágenes -->
+            <div class="image-container" id="imageContainer"></div>
+            <button class="edit-button" id="editImageButton">Cambiar Imágenes del Producto</button>
         </div>
+        
         <div class="product-info">
             <div class="info-row">
                 <div class="info-label">Descripción:</div>
@@ -31,15 +33,17 @@
                 <button class="edit-button" id="volver">Volver</button>
             </div>
                     
-            <!-- El modal -->
+                 <!-- El modal -->
             <div id="imageModal" class="modal" style="display: none;">
                 <div class="modal-content">
                     <span class="close" id="closeModal">&times;</span>
-                    <h2>Cambiar Imagen del Producto</h2>
-                    <input type="file" id="newImageInput">
-                    <button id="updateImageButton">Actualizar Imagen</button>
+                    <h2>Cambiar Imágenes del Producto</h2>
+                    <!-- Cambia el input para permitir la selección de múltiples archivos -->
+                    <input type="file" id="newImageInput" multiple accept="image/*">
+                    <button id="updateImageButton">Actualizar Imágenes</button>
                 </div>
             </div>
+            
         </div>
     </div>
     <script src="./producto.js"></script>

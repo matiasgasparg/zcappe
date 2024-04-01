@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const idimagen = localStorage.getItem('idimagen');
     const productImage = document.getElementById('productImage');
     const productDescription = document.getElementById('productDescription');
     const productPrice = document.getElementById('productPrice');
@@ -10,16 +9,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateDescriptionButton = document.getElementById('updateDescriptionButton');
     const updatePriceButton = document.getElementById('updatePriceButton');
     const volver = document.getElementById('volver');
-
+    const urlParams = new URLSearchParams(window.location.search);
+    const productId = urlParams.get('id');
+    localStorage.setItem('productId', productId);
 
     // Obtener los datos del producto desde el servidor y actualizar la página
-    fetch(`https://zcappe.pythonanywhere.com/upload/${idimagen}`)
+    fetch(`https://zcappe.pythonanywhere.com/producto/${productId}`)
         .then(response => response.json())
         .then(productData => {
+            productData.imagenes.forEach(imageUrl => {
+                const imageElement = document.createElement('img');
+                imageElement.onload = function() {
+                    // Reducir el tamaño a 150x150 píxeles
+                    this.width = 250;
+                    this.height = 250;
+                };
+                imageElement.src = imageUrl;
+                imageContainer.appendChild(imageElement);
+
             // Actualiza los valores en la página con los datos obtenidos del servidor
-            productImage.src = productData.url || 'predeterminado.png';
             productDescription.textContent = productData.descripcion;
             productPrice.textContent = `$${productData.precio}`;
+        });
         })
         .catch(error => {
             console.error('Error al obtener los datos del producto:', error);
@@ -54,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Función para actualizar un campo del producto en el servidor
     function updateProductField(field, value) {
-        const url = `https://zcappe.pythonanywhere.com/upload/${idimagen}`;
+        const url = `https://zcappe.pythonanywhere.com/producto/${productId}`;
         const data = {
             field: field,
             value: value

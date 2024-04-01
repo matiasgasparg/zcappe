@@ -67,7 +67,7 @@ function logout() {
 // Función para obtener todos los datos de los productos desde el servidor
 function getProductsFromServer() {
     // Realizar una solicitud GET al servidor para obtener todos los datos de los productos
-    fetch('https://zcappe.pythonanywhere.com/upload/')
+    fetch('https://zcappe.pythonanywhere.com/producto/')
         .then(response => {
             // Verificar si la respuesta del servidor es exitosa
             if (!response.ok) {
@@ -118,49 +118,92 @@ function displayProducts(products) {
     // Llama a más funciones para mostrar productos de otras categorías si es necesario
 }
 
-// Función para mostrar los productos de cada categoría en la interfaz de usuario
 function displayProductsByCategory(categoryId, products) {
-    const categorySection = document.getElementById(categoryId); // Obtener la sección de la categoría correspondiente
+    const categorySection = document.getElementById(categoryId);
 
     if (categorySection) {
-        const productsContainer = categorySection.querySelector('.products'); // Obtener el contenedor de productos de esa categoría
-
-        // Limpiar el contenedor de productos antes de mostrar los nuevos productos
+        const productsContainer = categorySection.querySelector('.products');
         productsContainer.innerHTML = '';
 
-        // Iterar sobre los productos de la categoría y mostrarlos en la interfaz de usuario
         products.forEach(product => {
             const productElement = document.createElement('div');
             productElement.classList.add('product');
+            const firstImageUrl = product.url[0];
 
-            productElement.innerHTML = `
-                <div class="product-info">
-                    <img src="${product.url}" alt="${product.descripcion}" class="product-image" onerror="this.onerror=null; this.src='predeterminado.png';">
-                    <div class="product-details">
-                        <h3>Descripción del producto</h3>
-                        <p>${product.descripcion}</p>
-                        <h3>Precio</h3>
-                        <p>$${product.precio}</p>
-                    </div>
+            const productAnchor = document.createElement('a');
+            productAnchor.href = `./detalleProducto/detalleProducto.html?id=${product.idproducto}`;
+
+            const productInfo = document.createElement('div');
+            productInfo.classList.add('product-info');
+
+            const productImage = document.createElement('img');
+            productImage.src = firstImageUrl;
+            productImage.alt = product.descripcion;
+            productImage.classList.add('product-image');
+            productImage.onerror = function() {
+                this.onerror = null;
+                this.src = 'predeterminado.png';
+            };
+
+            productAnchor.appendChild(productImage);
+
+            productInfo.innerHTML = `
+                <div class="product-details">
+                    <h3>Descripción del producto</h3>
+                    
+                    <p>${product.descripcion}</p>
+                    <h3>Precio</h3>
+                    <p>$${product.precio}</p>
                 </div>
             `;
-            
-            // Verificar si el usuario es administrador antes de agregar el botón "Editar Producto"
-        
-            if (localStorage.getItem('jwt_token') && parseInt(localStorage.getItem('admin')) === 1){
+
+            productElement.appendChild(productAnchor);
+            productElement.appendChild(productInfo);
+
+            productsContainer.appendChild(productElement);
+
+            if (localStorage.getItem('jwt_token') && parseInt(localStorage.getItem('admin')) === 1) {
                 const editButton = document.createElement('button');
                 editButton.textContent = 'Editar Producto';
                 editButton.addEventListener('click', () => {
-                    // Cuando se presiona el botón de editar producto, se obtiene el idimagen y se redirige a producto.js
-                    const idimagen = product.idimagen;
-                    localStorage.setItem('idimagen', idimagen); // Guardar el idimagen en el almacenamiento local
-                    window.location.href = './editarProducto/producto.html'; // Redirigir a producto.html
+                    window.location.href = `./editarProducto/producto.html?id=${product.idproducto}`;
                 });
 
                 productElement.appendChild(editButton);
             }
+            if (localStorage.getItem('jwt_token') && parseInt(localStorage.getItem('admin')) === 1) {
+                const editButton = document.createElement('button');
+                editButton.textContent = 'Eliminar Producto!';
+                editButton.addEventListener('click', () => {
+                    const idimagen = product.idimagen;
+                    eliminarProducto(product.idproducto)
+                });
 
-            productsContainer.appendChild(productElement);
+                productElement.appendChild(editButton);
+            }
+        });
+    }
+}
+function eliminarProducto(idproducto) {
+    const confirmDelete = confirm('¿Estás seguro de que deseas eliminar este producto? Esta acción no se puede deshacer.');
+
+    if (confirmDelete) {
+        // Enviar una solicitud al servidor para eliminar el producto
+        fetch(`https://zcappe.pythonanywhere.com/producto/${idproducto}`, {
+            method: 'DELETE'
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('El producto se eliminó correctamente.');
+                // Redirigir al usuario a la página principal u otra página deseada después de eliminar el producto
+                window.location.href = './index.html';
+            } else {
+                alert('Hubo un problema al intentar eliminar el producto.');
+            }
+        })
+        .catch(error => {
+            console.error('Error al intentar eliminar el producto:', error);
+            alert('Error al intentar eliminar el producto. Consulta la consola para más detalles.');
         });
     }
 }

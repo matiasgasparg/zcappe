@@ -61,10 +61,13 @@ nav a {
     background-color: #f9f9f9; /* Fondo para resaltar los productos */
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    cursor: pointer; /* Cambia el cursor al pasar sobre el producto */
+    transition: transform 0.2s; /* Agrega una transición suave al hacer hover */
 }
-
-
+.product:hover {
+    transform: scale(1.05); /* Escala ligeramente el producto al hacer hover */
+}
 .product img {
     max-width: 300px; /* Establece el ancho máximo de la imagen */
     max-height: 425px; /* Establece la altura máxima de la imagen */
@@ -86,4 +89,10 @@ footer {
     bottom: 0;
     width: 100%;
 }
+.product-details h3,
+.product-details p {
+    text-decoration: none !important; /* Usa !important para asegurarte de que este estilo tenga prioridad */
+}
+
+
 

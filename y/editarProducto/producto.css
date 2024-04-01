@@ -119,3 +119,9 @@ footer {
     text-align: center;
     padding: 20px 0;
   }
+/* Estilos para las imágenes dentro del contenedor */
+.image-container img {
+    width: 150px;
+    height: 150px;
+    object-fit: cover; /* Ajusta la imagen al tamaño del contenedor manteniendo su relación de aspecto */
+}

@@ -1,0 +1,102 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+    background-color: #f2f2f2;
+    text-align: center;
+    padding-top: 20px;
+}
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+.productDetailsContainer{
+    display: absolute;
+    justify-content: space-between;
+    margin: 20px auto;
+
+}
+.product-name {
+    font-size: 24px; /* Tamaño de fuente para el nombre del producto */
+    color: #333; /* Color del texto para el nombre del producto */
+    margin-bottom: 10px; /* Espacio inferior entre el nombre del producto y la descripción */
+}
+
+.product-description {
+    font-family: Arial, Helvetica, sans-serif; /* Cambiar según la preferencia de fuente */
+    font-size: 24px; /* Tamaño de fuente para números */
+    font-weight: bold; /* Peso de fuente */
+    color: #333333; /* Color de texto para números */
+  
+}
+
+.product-price {
+    font-family: Arial, Helvetica, sans-serif; /* Cambiar según la preferencia de fuente */
+    font-size: 24px; /* Tamaño de fuente para números */
+    font-weight: bold; /* Peso de fuente */
+    color: #333333; /* Color de texto para números */
+  
+}
+
+/* Estilos para el carousel de imágenes */
+.carousel {
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+    overflow: hidden; /* Para ocultar partes de las imágenes que se salen del carousel */
+}
+
+.carousel-inner {
+    display: flex;
+    overflow-x: auto; /* Permitir desplazamiento horizontal si hay muchas imágenes */
+}
+
+.carousel-item {
+    width: 100%; /* Hacer que cada imagen ocupe todo el ancho del carousel */
+}
+
+
+/* Estilos CSS para el carousel y las imágenes */
+.carousel-item img {
+    max-width: 300px; /* Establece el ancho máximo de la imagen */
+    max-height: 425px; /* Establece la altura máxima de la imagen */
+    width: auto; /* Permite que la imagen mantenga su proporción */
+    height: auto; /* Permite que la imagen mantenga su proporción */
+    margin: auto; /* Centra la imagen horizontalmente dentro del carousel-item */
+}
+/* Estilos para las flechas personalizadas */
+.custom-prev-icon, .custom-next-icon {
+    position: absolute;
+    top: 50%;
+    z-index: 5;
+    display: inline-block;
+    margin-top: -15px; /* Ajusta la posición verticalmente */
+    color: #000; /* Color de las flechas */
+    font-size: 30px; /* Tamaño de la fuente de las flechas */
+    background-color: rgba(255, 255, 255, 0.5); /* Color de fondo de las flechas */
+    padding: 5px 10px; /* Espaciado interno de las flechas */
+    border-radius: 50%; /* Forma redondeada para las flechas */
+}
+
+.custom-prev-icon {
+    left: 0; /* Ajusta la posición de la flecha izquierda */
+}
+
+.custom-next-icon {
+    right: 0; /* Ajusta la posición de la flecha derecha */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    bottom: 0;
+    width: 100%;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Agrega tus estilos personalizados aquí si es necesario -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <!-- Logo de la tienda -->
+        <img src="../logo.png" alt="Logo de la tienda" width="300" height="80">
+    </header>
+    <div class="container">
+        <!-- Agrega el carousel de imágenes -->
+        <div id="imageCarousel" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner" id="carouselInner">
+                <!-- Las imágenes se agregarán aquí dinámicamente -->
+            </div>
+            <!-- Controles de navegación -->
+            <!-- Flecha izquierda -->
+            <a class="carousel-control-prev" href="#imageCarousel" role="button" data-slide="prev">
+                <span class="custom-prev-icon" aria-hidden="true">&lt;</span>
+                <span class="sr-only">Anterior</span>
+            </a>
+            <!-- Flecha derecha -->
+            <a class="carousel-control-next" href="#imageCarousel" role="button" data-slide="next">
+                <span class="custom-next-icon" aria-hidden="true">&gt;</span>
+                <span class="sr-only">Siguiente</span>
+            </a>
+        </div>
+
+        <div id="productDetailsContainer" class="text-center">
+            <!-- Aquí se mostrarán los detalles del producto -->
+            <!-- Mueve la descripción y el precio aquí -->
+        </div>
+    </div>
+
+    <!-- Agrega tus scripts JavaScript aquí -->
+    <script src="jquery-3.5.1.slim.min.js"></script>
+    <script src="bootstrap.min.js"></script>
+    <script src="detalleProducto.js"></script>
+</body>
+<footer>
+    <p>Dirección: [Tu dirección]</p>
+    <p>Ubicación: [Tu ubicación]</p>
+    <p>Contacto: [Tus contactos]</p>
+</footer>
+</html>
